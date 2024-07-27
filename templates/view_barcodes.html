@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Barcodes</title>
+    <style>
+        .barcode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .barcode-item {
+            text-align: center;
+        }
+        .barcode-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Barcodes</h1>
+    <div class="barcode-grid">
+        {% for book in books %}
+        <div class="barcode-item">
+            <img src="{{ book.barcode_image.url }}" alt="Barcode">
+            
+        </div>
+        {% endfor %}
+    </div>
+    
+    <script>
+        // Trigger print dialog when page loads
+        window.onload = function() {
+            window.print();
+        };
+    </script>
+</body>
+</html>
